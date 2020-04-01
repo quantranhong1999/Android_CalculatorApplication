@@ -161,7 +161,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                 }
                 //Nếu tvMath trống
-                if(tvMath.getText().length()==0 && tvResult.getText().length()!=0){ //và tvResult đã nhập rồi
+                if(tvMath.getText().length()==0 && tvResult.getText().length()!=0 && !tvResult.getText().toString().endsWith(".")){ //và tvResult đã nhập rồi, kết thúc khác.
                     //Thì thêm dấu /
                     tvMath.append(tvResult.getText());
                     tvMath.append("/");
@@ -181,7 +181,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     }
 
                 }
-                if(tvMath.getText().length()==0&& tvResult.getText().length()!=0){
+                if(tvMath.getText().length()==0&& tvResult.getText().length()!=0 && !tvResult.getText().toString().endsWith(".")){
                     tvMath.append(tvResult.getText());
                     tvMath.append("*");
                     tvResult.setText("");
@@ -199,7 +199,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     }
 
                 }
-                if(tvMath.getText().length()==0 && tvResult.getText().length()!=0){
+                if(tvMath.getText().length()==0 && tvResult.getText().length()!=0 && !tvResult.getText().toString().endsWith(".")){
                     tvMath.append(tvResult.getText());
                     tvMath.append("-");
                     tvResult.setText("");
@@ -217,7 +217,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     }
 
                 }
-                if(tvMath.getText().length()==0 && tvResult.getText().length()!=0){
+                if(tvMath.getText().length()==0 && tvResult.getText().length()!=0 && !tvResult.getText().toString().endsWith(".")){
                     tvMath.append(tvResult.getText());
                     tvMath.append("+");
                     tvResult.setText("");
@@ -233,6 +233,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     if (Character.toString(equal).matches("[^0-9]") && (tvResult.getText().length() == 0))
                         break;
                 }
+                //Nếu tvResult nhập ví dụ 6. thì không làm gì
+                if(tvResult.getText().toString().endsWith(".")) break;
                 tvMath.append(tvResult.getText());
                 cal();
                 tvMath.append("=");
